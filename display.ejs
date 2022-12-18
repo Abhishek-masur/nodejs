@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Details</title>
+</head>
+<style>
+    body {
+        background-color: aqua;
+    }
+</style>
+
+<body>
+    <h1>Travelling list</h1>
+    <table border="1" width="100%">
+        <tr>
+            <th>Name</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Distance</th>
+            <th>Fare</th>
+            <th>Actions</th>
+        </tr>
+        <% if(service.length>0){%>
+            <% for(var i=0;i<service.length;i++) { %>
+
+                <tr>
+                    <td>
+                        <%- service[i].name %>
+                    </td>
+                    <td>
+                        <%- service[i].source %>
+                    </td>
+
+                    <td>
+                        <%- service[i].destination %>
+                    </td>
+                    <td>
+                        <%- service[i].distance %>
+                    </td>
+                    <td>
+                        <%- service[i].fare %>
+                    </td>
+                    <td><a href="/delete-service?source=<%- service[i].source %>">Delete</a>
+                        <% if(service[i].distance>100){%>
+                            <a href="/update-service?name=<%- service[i].name %>">update</a></td>
+                    <% } %>
+
+
+                </tr>
+
+                <% } %>
+                    <% } else{ %>
+                        <h1>data not found</h1>
+                        <% } %>
+
+
+    </table>
+
+</body>
+
+</html>
