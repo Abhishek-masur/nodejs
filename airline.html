@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline management</title>
+    <link rel="stylesheet" href="airline.css">
+</head>
+
+<body>
+    <h1>Airline Management system</h1>
+    <p>
+        Please Register and Confirm the tickets<br> Enter the Required details and complete the form <br>
+    </p>
+    <div>
+        <form id="regform" name="Formair">
+            <label for="Fname">First Name</label>
+            <input type="text" name="Firstname" id="Fname" placeholder="Enter your First Name"><br>
+            <label for="lname">Last Name</label>
+            <input type="text" name="lastname" id="lname" placeholder="Enter Your last Name"><br>
+            <label for="age">Age</label>
+            <input type="text" name="Age" id="age" placeholder="Enter your Age"><br>
+            <label for="src">Select source:</label>
+            <select name="source" id="src">
+                <option value="Hubli">Hubli</option>
+                <option value="Banglore">Banglore</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+            </select><br>
+            <label for="Destination">Select Destination:</label>
+            <select name="source" id="Destination">
+                <option value="Hubli">Hubli</option>
+                <option value="Banglore">Banglore</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+            </select><br>
+            <label for="pass">Total passengers</label>
+            <input type="number" name="totaltickets" id="pass" placeholder="Total tickets"><br>
+        </form>
+        <input type="submit" id="sub">
+        <div class="Dis_err">
+            <p id="Dis"></p>
+            <h2 id="Error_name"></h2>
+            <h2 id="Error_name2"></h2>
+            <h2 id="Error_name3"></h2>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        function isvalid() {
+            let Fname = document.getElementById("Fname").value;
+            let lname = document.getElementById("lname").value;
+            let age = document.getElementById("age").value;
+            let src = document.getElementById("src").value;
+            let des = document.getElementById("Destination").value;
+            let tick = document.getElementById("pass").value;
+
+
+            if (Fname == "") {
+                document.getElementById("Error_name").innerHTML = "Enter Name Properly ";
+
+            }
+            if (lname == "") {
+                document.getElementById("Error_name").innerHTML = "Enter Name Properly ";
+            }
+            if (age == "") {
+                document.getElementById("Error_name2").innerHTML = "Enter Age Properly";
+            }
+            if (src == des) {
+                document.getElementById("Error_name3").innerHTML = "Inappropriate Place selection";
+            }
+            setTimeout(() => {
+                document.getElementById("Error_name").innerHTML = "";
+                document.getElementById("Error_name2").innerHTML = "";
+                document.getElementById("Error_name3").innerHTML = "";
+                document.getElementById("Dis").innerHTML = "";
+            }, 2000);
+
+            document.getElementById("Dis").innerHTML = `!!!!Confirm Details!!!<br>Name:${Fname + " " + lname} <br> Amount:${tick * 300} <br> Total Passengers:${tick} `;
+        }
+        document.getElementById("sub").addEventListener("click", () => {
+            isvalid()
+        });
+    </script>
+</body>
+
+</html>
